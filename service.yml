@@ -1,6 +1,6 @@
 services:
 
-  productquantities:
+  inventory:
     git_url: git@github.com:launchany/microservices-node-inventory.git
     git_branch: master
     command: npm start

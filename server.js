@@ -6,14 +6,19 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
+// HAL support
+var halson = require('halson');
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var config = require('./config');
+// set our port, defaulting if nothing is specified in the env
+var port = process.env.PORT || 8080;        
 
-var port = process.env.PORT || 8080;        // set our port
+// load app configurations from config.js
+var config = require('./config');
 
 // configure our connection to MongoDB
 var mongoose = require('mongoose');
@@ -22,23 +27,16 @@ var mongoose = require('mongoose');
 mongoose.connect(config.db[app.settings.env]); 
 
 // import models
-var ProductQuantity = require('./app/models/productQuantity');
+var ProductQuantity = require('./app/models/product_quantity');
 
 // get an instance of the express Router, allowing us to add
-// middleware and register our API routes
+// middleware and register our API routes as needed
 var router = express.Router(); 
-
-// HAL support
-var halson = require('halson');
 
 // create/update a productQuantity
 router.put('/product_quantities/:product_id', function(req, res) {
 
-    if (req.params.product_id == null) {
-	res.status(400);
-	res.setHeader('Content-Type', 'application/vnd.error+json');
-	res.json({ message: "product_id parameter is required"});
-    } else if (req.body.quantity_onhand == null) {
+    if (req.body.quantity_onhand == null) {
 	res.status(400);
 	res.setHeader('Content-Type', 'application/vnd.error+json');
 	res.json({ message: "quantity_onhand parameter is required"});

@@ -1,4 +1,4 @@
-productquantities:
+inventory:
   build: .
   command: npm start
   ports:
