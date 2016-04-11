@@ -1,4 +1,4 @@
-products:
+productquantities:
   build: .
   command: npm start
   ports:
@@ -8,5 +8,6 @@ products:
   - mongodb:mongodb.cloud66.local
   environment:
     - NODE_ENV=production
+    - MONGODB_ADDRESS=mongodb
 mongodb:
   image: mongo
