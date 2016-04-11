@@ -1,0 +1,14 @@
+{
+  "name": "microservices-node-express-products",
+  "version": "1.0.0",
+  "description": "Example REST-based API using Node Express, deployed using Docker",
+  "main": "server.js",
+  "author": "James Higginbotham",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "halson": "~2.3.1",
+    "mongoose": "~4.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+products:
+  build: .
+  command: npm start
+  ports:
+  - "8080:8080"
+  links:
+  - mongodb
+  - mongodb:mongodb.cloud66.local
+  environment:
+    - NODE_ENV=production
+mongodb:
+  image: mongo
