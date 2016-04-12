@@ -1,7 +1,7 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-var ProjectQuantitySchema   = new Schema({
+var ProductQuantitySchema   = new Schema({
     product_id: String,
     quantity_onhand: Number
 },
@@ -9,4 +9,4 @@ var ProjectQuantitySchema   = new Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
 
-module.exports = mongoose.model('ProjectQuantity', ProjectQuantitySchema);
+module.exports = mongoose.model('ProductQuantity', ProductQuantitySchema);
